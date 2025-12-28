@@ -70,7 +70,6 @@
                 <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
                     <a href="#concept" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_concept">Concept</a>
                     <a href="#menu" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_menu">Menu</a>
-                    <a href="#gallery" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_gallery">Gallery</a>
                     <a href="#access" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_access">Access</a>
                 </nav>
 
@@ -81,7 +80,7 @@
                 </div>
 
                 <!-- 予約ボタン（PC） -->
-                <a href="https://jennys-fashion-lash.stores.jp/reserve/jennys_Fashion_lash/4808842#pageContent" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-brand-800 text-white px-6 py-2 rounded-full text-sm hover:bg-brand-900 transition-colors shadow-md uppercase tracking-wider" data-i18n="book_now">
+                <a href="https://jennys-fashion-lash.stores.jp/reserve/jennys/4808842#pageContent" target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-brand-800 text-white px-6 py-2 rounded-full text-sm hover:bg-brand-900 transition-colors shadow-md uppercase tracking-wider" data-i18n="book_now">
                     Book Now
                 </a>
 
@@ -99,7 +98,6 @@
             </button>
             <a href="#concept" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_concept">Concept</a>
             <a href="#menu" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_menu">Menu</a>
-            <a href="#gallery" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_gallery">Gallery</a>
             <a href="#access" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_access">Access</a>
             
             <!-- 言語切り替え (Mobile) -->
@@ -109,7 +107,7 @@
                 <button onclick="switchLanguage('ja')" class="text-xl text-stone-400 hover:text-brand-800">日本語</button>
             </div>
 
-            <a href="https://jennys-fashion-lash.stores.jp/reserve/jennys_Fashion_lash/4808842#pageContent" target="_blank" rel="noopener noreferrer" class="bg-brand-800 text-white px-8 py-3 rounded-full shadow-lg uppercase tracking-wide mt-4" data-i18n="book_now">Book Now</a>
+            <a href="https://jennys-fashion-lash.stores.jp/reserve/jennys/4808842#pageContent" target="_blank" rel="noopener noreferrer" class="bg-brand-800 text-white px-8 py-3 rounded-full shadow-lg uppercase tracking-wide mt-4" data-i18n="book_now">Book Now</a>
         </div>
     </header>
 
@@ -128,7 +126,7 @@
             <h1 class="text-4xl md:text-6xl font-serif font-bold text-brand-900 mb-8 leading-tight" data-i18n="hero_title">
                 Ready for a<br>Lash Glow-up?
             </h1>
-            <a href="https://jennys-fashion-lash.stores.jp/reserve/jennys_Fashion_lash/4808842#pageContent" target="_blank" rel="noopener noreferrer" class="inline-block bg-white/90 text-brand-900 px-8 py-3 border border-brand-200 rounded-sm hover:bg-brand-50 transition-all tracking-widest shadow-lg uppercase" data-i18n="hero_button">
+            <a href="https://jennys-fashion-lash.stores.jp/reserve/jennys/4808842#pageContent" target="_blank" rel="noopener noreferrer" class="inline-block bg-white/90 text-brand-900 px-8 py-3 border border-brand-200 rounded-sm hover:bg-brand-50 transition-all tracking-widest shadow-lg uppercase" data-i18n="hero_button">
                 Reservation
             </a>
         </div>
@@ -139,7 +137,8 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="w-full md:w-1/2 fade-in">
-                    <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059e98b?auto=format&fit=crop&q=80&w=2070" 
+                    <!-- コンセプト画像を差し替え -->
+                    <img src="S__22904840.jpg" 
                          alt="Nail Art" 
                          class="rounded-lg shadow-xl w-full h-[400px] object-cover">
                 </div>
@@ -179,40 +178,14 @@
             <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm fade-in min-h-[400px]">
                 <!-- ネイルメニューリスト -->
                 <div id="menu-list-nail">
-                    <!-- メニューアイテム 1 -->
-                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
-                        <div>
-                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_1_title">One Color / Glitter Gradient</h3>
-                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_1_desc">Off & Care included / 90min</p>
-                        </div>
-                        <span class="text-xl font-serif text-brand-800">¥6,600</span>
-                    </div>
-
-                    <!-- メニューアイテム 2 -->
-                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
-                        <div>
-                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_2_title">French / Color Gradient</h3>
-                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_2_desc">Off & Care included / 100min</p>
-                        </div>
-                        <span class="text-xl font-serif text-brand-800">¥7,700</span>
-                    </div>
-
-                    <!-- メニューアイテム 3 -->
-                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
-                        <div>
-                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_3_title">Monthly Design Course</h3>
-                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_3_desc">Monthly trend designs / 120min</p>
-                        </div>
-                        <span class="text-xl font-serif text-brand-800">¥8,800</span>
-                    </div>
-
-                    <!-- メニューアイテム 4 -->
-                    <div class="flex justify-between items-baseline pb-2">
-                        <div>
-                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_4_title">Foot One Color</h3>
-                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_4_desc">Foot bath & Care included</p>
-                        </div>
-                        <span class="text-xl font-serif text-brand-800">¥7,700</span>
+                    <div class="flex flex-col items-center justify-center py-10">
+                        <p class="text-lg text-stone-600 mb-6 text-center" data-i18n="nail_menu_note">
+                            Please contact us by phone for Nail Menu details.
+                        </p>
+                        <a href="tel:070-2219-2608" class="inline-flex items-center gap-2 bg-brand-800 text-white px-8 py-3 rounded-full shadow-md hover:bg-brand-900 transition-colors">
+                            <i class="ph ph-phone text-xl"></i>
+                            070-2219-2608
+                        </a>
                     </div>
                 </div>
 
@@ -259,43 +232,6 @@
             <div class="text-center mt-8 fade-in">
                 <a href="#" class="text-brand-800 border-b border-brand-800 pb-1 hover:text-brand-600 hover:border-brand-600 transition-colors uppercase tracking-wide text-sm" data-i18n="view_more">
                     View More Menu &rarr;
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ギャラリー -->
-    <section id="gallery" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl font-serif text-brand-800 mb-4" data-i18n="gallery_title">Gallery</h2>
-                <p class="text-stone-500" data-i18n="gallery_subtitle">Latest Designs</p>
-            </div>
-
-            <!-- 写真グリッド -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- 写真1 -->
-                <div class="aspect-square overflow-hidden rounded-lg fade-in">
-                    <img src="https://images.unsplash.com/photo-1632516643720-e7f5d7d6ecc9?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Nail 1">
-                </div>
-                <!-- 写真2 -->
-                <div class="aspect-square overflow-hidden rounded-lg fade-in">
-                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Nail 2">
-                </div>
-                <!-- 写真3 -->
-                <div class="aspect-square overflow-hidden rounded-lg fade-in">
-                    <img src="https://images.unsplash.com/photo-1596613768469-5a1e76558667?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Nail 3">
-                </div>
-                <!-- 写真4 -->
-                <div class="aspect-square overflow-hidden rounded-lg fade-in">
-                    <img src="https://images.unsplash.com/photo-1629239088673-c6c7237905a3?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" alt="Nail 4">
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 fade-in">
-                <a href="#" class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800 font-medium" data-i18n="view_instagram">
-                    <i class="ph ph-instagram-logo text-xl"></i>
-                    View on Instagram
                 </a>
             </div>
         </div>
@@ -371,7 +307,6 @@
             en: {
                 nav_concept: "Concept",
                 nav_menu: "Menu",
-                nav_gallery: "Gallery",
                 nav_access: "Access",
                 book_now: "Book Now",
                 hero_subtitle: "Your Private Salon",
@@ -384,14 +319,7 @@
                 menu_subtitle: "Price List",
                 menu_tab_nail: "Nail",
                 menu_tab_lash: "Eyelash",
-                menu_1_title: "One Color / Glitter Gradient",
-                menu_1_desc: "Off & Care included / 90min",
-                menu_2_title: "French / Color Gradient",
-                menu_2_desc: "Off & Care included / 100min",
-                menu_3_title: "Monthly Design Course",
-                menu_3_desc: "Monthly trend designs / 120min",
-                menu_4_title: "Foot One Color",
-                menu_4_desc: "Foot bath & Care included",
+                nail_menu_note: "Please contact us by phone for Nail Menu details.",
                 lash_1_title: "Classic Extensions (100 strands)",
                 lash_1_desc: "Natural look / 90min",
                 lash_2_title: "Volume Lash (300 strands)",
@@ -401,8 +329,6 @@
                 lash_4_title: "Removal",
                 lash_4_desc: "For existing extensions",
                 view_more: "View More Menu →",
-                gallery_title: "Gallery",
-                gallery_subtitle: "Latest Designs",
                 view_instagram: "View on Instagram",
                 access_title: "Access",
                 access_label_name: "SALON NAME",
@@ -418,7 +344,6 @@
             ja: {
                 nav_concept: "コンセプト",
                 nav_menu: "メニュー",
-                nav_gallery: "ギャラリー",
                 nav_access: "アクセス",
                 book_now: "ご予約",
                 hero_subtitle: "あなただけのプライベートサロン",
@@ -431,14 +356,7 @@
                 menu_subtitle: "料金表",
                 menu_tab_nail: "ネイル",
                 menu_tab_lash: "まつ毛",
-                menu_1_title: "ワンカラー / ラメグラデーション",
-                menu_1_desc: "オフ・ケア込み / 90分",
-                menu_2_title: "フレンチ / カラーグラデーション",
-                menu_2_desc: "オフ・ケア込み / 100分",
-                menu_3_title: "定額デザインコース",
-                menu_3_desc: "毎月変わるトレンドデザイン / 120分",
-                menu_4_title: "フット ワンカラー",
-                menu_4_desc: "フットバス・ケア込み",
+                nail_menu_note: "ネイルメニューの詳細はお電話にてお問い合わせください。",
                 lash_1_title: "シングルラッシュ (100本)",
                 lash_1_desc: "自然な仕上がり / 90分",
                 lash_2_title: "ボリュームラッシュ (300本)",
@@ -448,8 +366,6 @@
                 lash_4_title: "オフ",
                 lash_4_desc: "付け替え時など",
                 view_more: "詳しいメニューを見る →",
-                gallery_title: "ギャラリー",
-                gallery_subtitle: "最新のデザイン",
                 view_instagram: "Instagramを見る",
                 access_title: "アクセス",
                 access_label_name: "店名",
