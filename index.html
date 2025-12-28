@@ -1,36 +1,36 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jennie Fashion | あなたの指先を彩る</title>
+    <title>Jenny's Fashion / lash | Color Your Fingertips</title>
     
     <!-- デザインを整えるためのツール（Tailwind CSS）を読み込み -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- フォント（Google Fonts）を読み込み -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <!-- フォント（Google Fonts）を読み込み：英語用(Lato)と日本語用(Noto Sans JP) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
     
     <!-- アイコン（Phosphor Icons）を読み込み -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <script>
-        // サイト全体のカラー設定（ここを変えると雰囲気が変わります）
+        // サイト全体のカラー設定
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            50: '#ecfdf5',  // 背景（淡いエメラルドミント）
+                            50: '#ecfdf5',  // 背景
                             100: '#d1fae5',
                             300: '#6ee7b7', // アクセント
-                            500: '#10b981', // ボタンなど（鮮やかなエメラルド）
-                            800: '#065f46', // 文字色（深い緑）
+                            500: '#10b981', // ボタンなど
+                            800: '#065f46', // 文字色
                             900: '#064e3b', // 最も濃い緑
                         }
                     },
                     fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        sans: ['"Lato"', '"Noto Sans JP"', 'sans-serif'],
                         serif: ['"Playfair Display"', 'serif'],
                     }
                 }
@@ -48,35 +48,48 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* 日本語選択時のフォント優先度調整 */
+        html[lang="ja"] body {
+            font-family: "Noto Sans JP", "Lato", sans-serif;
+        }
     </style>
 </head>
-<body class="font-sans text-stone-600 bg-brand-50 antialiased">
+<body class="font-sans text-stone-600 bg-brand-50 antialiased transition-colors duration-300">
 
     <!-- ヘッダー（上のメニュー部分） -->
     <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300" id="header">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <!-- ロゴ -->
-            <a href="#" class="font-serif text-2xl font-bold text-brand-800 tracking-wider">
-                Jennie Fashion
+            <a href="#" class="font-serif text-xl md:text-2xl font-bold text-brand-800 tracking-wider">
+                Jenny's Fashion / lash
             </a>
             
-            <!-- PC用メニュー -->
-            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
-                <a href="#concept" class="hover:text-brand-500 transition-colors">Concept</a>
-                <a href="#menu" class="hover:text-brand-500 transition-colors">Menu</a>
-                <a href="#gallery" class="hover:text-brand-500 transition-colors">Gallery</a>
-                <a href="#access" class="hover:text-brand-500 transition-colors">Access</a>
-            </nav>
+            <div class="flex items-center gap-6">
+                <!-- PC用メニュー -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+                    <a href="#concept" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_concept">Concept</a>
+                    <a href="#menu" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_menu">Menu</a>
+                    <a href="#gallery" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_gallery">Gallery</a>
+                    <a href="#access" class="hover:text-brand-500 transition-colors uppercase" data-i18n="nav_access">Access</a>
+                </nav>
 
-            <!-- 予約ボタン（PC） -->
-            <a href="#" class="hidden md:inline-block bg-brand-800 text-white px-6 py-2 rounded-full text-sm hover:bg-brand-900 transition-colors shadow-md">
-                ご予約はこちら
-            </a>
+                <!-- 言語切り替えスイッチ (PC) -->
+                <div class="hidden md:flex items-center border border-brand-200 rounded-full overflow-hidden text-xs font-bold">
+                    <button onclick="switchLanguage('en')" class="lang-btn px-3 py-1 bg-brand-800 text-white transition-colors" id="btn-en">EN</button>
+                    <button onclick="switchLanguage('ja')" class="lang-btn px-3 py-1 bg-white text-brand-800 hover:bg-brand-50 transition-colors" id="btn-ja">JP</button>
+                </div>
 
-            <!-- スマホ用メニューボタン（ハンバーガー） -->
-            <button id="menu-btn" class="md:hidden text-2xl text-brand-800 focus:outline-none">
-                <i class="ph ph-list"></i>
-            </button>
+                <!-- 予約ボタン（PC） -->
+                <a href="#" class="hidden md:inline-block bg-brand-800 text-white px-6 py-2 rounded-full text-sm hover:bg-brand-900 transition-colors shadow-md uppercase tracking-wider" data-i18n="book_now">
+                    Book Now
+                </a>
+
+                <!-- スマホ用メニューボタン（ハンバーガー） -->
+                <button id="menu-btn" class="md:hidden text-2xl text-brand-800 focus:outline-none">
+                    <i class="ph ph-list"></i>
+                </button>
+            </div>
         </div>
 
         <!-- スマホ用ドロワーメニュー -->
@@ -84,17 +97,25 @@
             <button id="close-menu-btn" class="absolute top-6 right-6 text-3xl text-stone-400">
                 <i class="ph ph-x"></i>
             </button>
-            <a href="#concept" class="mobile-link hover:text-brand-500">Concept</a>
-            <a href="#menu" class="mobile-link hover:text-brand-500">Menu</a>
-            <a href="#gallery" class="mobile-link hover:text-brand-500">Gallery</a>
-            <a href="#access" class="mobile-link hover:text-brand-500">Access</a>
-            <a href="#" class="bg-brand-800 text-white px-8 py-3 rounded-full shadow-lg">ご予約はこちら</a>
+            <a href="#concept" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_concept">Concept</a>
+            <a href="#menu" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_menu">Menu</a>
+            <a href="#gallery" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_gallery">Gallery</a>
+            <a href="#access" class="mobile-link hover:text-brand-500 uppercase" data-i18n="nav_access">Access</a>
+            
+            <!-- 言語切り替え (Mobile) -->
+            <div class="flex items-center gap-4 text-brand-800 font-bold">
+                <button onclick="switchLanguage('en')" class="text-xl underline decoration-brand-500 decoration-2 underline-offset-4">English</button>
+                <span class="text-stone-300">|</span>
+                <button onclick="switchLanguage('ja')" class="text-xl text-stone-400 hover:text-brand-800">日本語</button>
+            </div>
+
+            <a href="#" class="bg-brand-800 text-white px-8 py-3 rounded-full shadow-lg uppercase tracking-wide mt-4" data-i18n="book_now">Book Now</a>
         </div>
     </header>
 
     <!-- ヒーローセクション（トップの大きな画像） -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- 背景画像：お好きな画像のURLに書き換えてください -->
+        <!-- 背景画像 -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=2070" 
                  alt="Nail Salon Background" 
@@ -103,12 +124,12 @@
         </div>
 
         <div class="relative z-10 text-center px-4 fade-in">
-            <p class="text-brand-900 font-serif italic text-xl md:text-2xl mb-4 tracking-widest">Your Private Salon</p>
-            <h1 class="text-4xl md:text-6xl font-serif font-bold text-brand-900 mb-8 leading-tight">
-                指先に、<br>魔法をかける時間。
+            <p class="text-brand-900 font-serif italic text-xl md:text-2xl mb-4 tracking-widest" data-i18n="hero_subtitle">Your Private Salon</p>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-brand-900 mb-8 leading-tight" data-i18n="hero_title">
+                Magic for<br>Your Fingertips.
             </h1>
-            <a href="#" class="inline-block bg-white/90 text-brand-900 px-8 py-3 border border-brand-200 rounded-sm hover:bg-brand-50 transition-all tracking-widest shadow-lg">
-                RESERVATION
+            <a href="#" class="inline-block bg-white/90 text-brand-900 px-8 py-3 border border-brand-200 rounded-sm hover:bg-brand-50 transition-all tracking-widest shadow-lg uppercase" data-i18n="hero_button">
+                Reservation
             </a>
         </div>
     </section>
@@ -123,14 +144,12 @@
                          class="rounded-lg shadow-xl w-full h-[400px] object-cover">
                 </div>
                 <div class="w-full md:w-1/2 fade-in">
-                    <h2 class="text-3xl font-serif text-brand-800 mb-6">Concept</h2>
-                    <p class="text-lg leading-loose text-stone-600 mb-6">
-                        Jennie Fashionは、大人の女性のためのプライベートサロンです。<br>
-                        トレンドを取り入れつつも、お客様一人ひとりのライフスタイルに寄り添ったデザインをご提案いたします。
+                    <h2 class="text-3xl font-serif text-brand-800 mb-6" data-i18n="concept_title">Concept</h2>
+                    <p class="text-lg leading-loose text-stone-600 mb-6" data-i18n="concept_text1">
+                        Jenny's Fashion / lash is a private salon for sophisticated women. We propose designs that incorporate trends while suiting each client's lifestyle.
                     </p>
-                    <p class="text-lg leading-loose text-stone-600">
-                        ゆったりとした個室空間で、<br>
-                        日々の忙しさを忘れる癒しのひとときをお過ごしください。
+                    <p class="text-lg leading-loose text-stone-600" data-i18n="concept_text2">
+                        Please spend a relaxing time forgetting the busyness of daily life in a spacious private room.
                     </p>
                 </div>
             </div>
@@ -140,52 +159,106 @@
     <!-- メニュー -->
     <section id="menu" class="py-20 bg-brand-50">
         <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl font-serif text-brand-800 mb-4">Menu</h2>
-                <p class="text-stone-500">料金表</p>
+            <div class="text-center mb-10 fade-in">
+                <h2 class="text-3xl font-serif text-brand-800 mb-4" data-i18n="menu_title">Menu</h2>
+                <p class="text-stone-500" data-i18n="menu_subtitle">Price List</p>
             </div>
 
-            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm fade-in">
-                <!-- メニューアイテム 1 -->
-                <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
-                    <div>
-                        <h3 class="text-lg font-bold text-stone-700">ワンカラー / ラメグラデーション</h3>
-                        <p class="text-sm text-stone-400 mt-1">オフ・ケア込み / 90分</p>
+            <!-- メニュー切り替えタブ -->
+            <div class="flex justify-center mb-10 fade-in">
+                <div class="inline-flex bg-white rounded-full p-1 shadow-sm border border-brand-200">
+                    <button onclick="switchMenu('nail')" id="tab-nail" class="px-8 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all bg-brand-800 text-white shadow-sm" data-i18n="menu_tab_nail">
+                        Nail
+                    </button>
+                    <button onclick="switchMenu('lash')" id="tab-lash" class="px-8 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all text-stone-500 hover:text-brand-800" data-i18n="menu_tab_lash">
+                        Eyelash
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm fade-in min-h-[400px]">
+                <!-- ネイルメニューリスト -->
+                <div id="menu-list-nail">
+                    <!-- メニューアイテム 1 -->
+                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_1_title">One Color / Glitter Gradient</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_1_desc">Off & Care included / 90min</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥6,600</span>
                     </div>
-                    <span class="text-xl font-serif text-brand-800">¥6,600</span>
+
+                    <!-- メニューアイテム 2 -->
+                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_2_title">French / Color Gradient</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_2_desc">Off & Care included / 100min</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥7,700</span>
+                    </div>
+
+                    <!-- メニューアイテム 3 -->
+                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_3_title">Monthly Design Course</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_3_desc">Monthly trend designs / 120min</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥8,800</span>
+                    </div>
+
+                    <!-- メニューアイテム 4 -->
+                    <div class="flex justify-between items-baseline pb-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="menu_4_title">Foot One Color</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="menu_4_desc">Foot bath & Care included</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥7,700</span>
+                    </div>
                 </div>
 
-                <!-- メニューアイテム 2 -->
-                <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
-                    <div>
-                        <h3 class="text-lg font-bold text-stone-700">フレンチ / カラーグラデーション</h3>
-                        <p class="text-sm text-stone-400 mt-1">オフ・ケア込み / 100分</p>
+                <!-- まつ毛メニューリスト（最初は非表示） -->
+                <div id="menu-list-lash" class="hidden">
+                    <!-- まつ毛アイテム 1 -->
+                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="lash_1_title">Classic Extensions (100 strands)</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="lash_1_desc">Natural look / 90min</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥6,600</span>
                     </div>
-                    <span class="text-xl font-serif text-brand-800">¥7,700</span>
-                </div>
 
-                <!-- メニューアイテム 3 -->
-                <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
-                    <div>
-                        <h3 class="text-lg font-bold text-stone-700">定額デザインコース</h3>
-                        <p class="text-sm text-stone-400 mt-1">毎月変わるトレンドデザイン / 120分</p>
+                    <!-- まつ毛アイテム 2 -->
+                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="lash_2_title">Volume Lash (300 strands)</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="lash_2_desc">Voluminous look / 100min</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥7,700</span>
                     </div>
-                    <span class="text-xl font-serif text-brand-800">¥8,800</span>
-                </div>
 
-                <!-- メニューアイテム 4 -->
-                <div class="flex justify-between items-baseline pb-2">
-                    <div>
-                        <h3 class="text-lg font-bold text-stone-700">フット ワンカラー</h3>
-                        <p class="text-sm text-stone-400 mt-1">フットバス・ケア込み</p>
+                    <!-- まつ毛アイテム 3 -->
+                    <div class="flex justify-between items-baseline border-b border-brand-100 pb-4 mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="lash_3_title">Lash Lift (Perm)</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="lash_3_desc">Treatment included / 60min</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥5,500</span>
                     </div>
-                    <span class="text-xl font-serif text-brand-800">¥7,700</span>
+
+                    <!-- まつ毛アイテム 4 -->
+                    <div class="flex justify-between items-baseline pb-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-700" data-i18n="lash_4_title">Removal</h3>
+                            <p class="text-sm text-stone-400 mt-1" data-i18n="lash_4_desc">For existing extensions</p>
+                        </div>
+                        <span class="text-xl font-serif text-brand-800">¥1,100</span>
+                    </div>
                 </div>
             </div>
             
             <div class="text-center mt-8 fade-in">
-                <a href="#" class="text-brand-800 border-b border-brand-800 pb-1 hover:text-brand-600 hover:border-brand-600 transition-colors">
-                    詳しいメニューを見る &rarr;
+                <a href="#" class="text-brand-800 border-b border-brand-800 pb-1 hover:text-brand-600 hover:border-brand-600 transition-colors uppercase tracking-wide text-sm" data-i18n="view_more">
+                    View More Menu &rarr;
                 </a>
             </div>
         </div>
@@ -195,8 +268,8 @@
     <section id="gallery" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-3xl font-serif text-brand-800 mb-4">Gallery</h2>
-                <p class="text-stone-500">最新のデザイン</p>
+                <h2 class="text-3xl font-serif text-brand-800 mb-4" data-i18n="gallery_title">Gallery</h2>
+                <p class="text-stone-500" data-i18n="gallery_subtitle">Latest Designs</p>
             </div>
 
             <!-- 写真グリッド -->
@@ -220,9 +293,9 @@
             </div>
             
             <div class="text-center mt-12 fade-in">
-                <a href="#" class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800">
+                <a href="#" class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800 font-medium" data-i18n="view_instagram">
                     <i class="ph ph-instagram-logo text-xl"></i>
-                    Instagramで見る
+                    View on Instagram
                 </a>
             </div>
         </div>
@@ -235,23 +308,27 @@
                 
                 <!-- 店舗情報 -->
                 <div class="w-full md:w-1/2 fade-in">
-                    <h2 class="text-3xl font-serif text-brand-800 mb-8">Access</h2>
+                    <h2 class="text-3xl font-serif text-brand-800 mb-8" data-i18n="access_title">Access</h2>
                     <div class="space-y-6 bg-white p-8 rounded-xl shadow-sm">
                         <div>
-                            <p class="text-sm text-stone-400 mb-1">SALON NAME</p>
-                            <p class="text-lg font-medium">Jennie Fashion</p>
+                            <p class="text-sm text-stone-400 mb-1 tracking-widest" data-i18n="access_label_name">SALON NAME</p>
+                            <p class="text-lg font-medium">Jenny's Fashion / lash</p>
                         </div>
                         <div>
-                            <p class="text-sm text-stone-400 mb-1">ADDRESS</p>
-                            <p>〒150-0001<br>東京都渋谷区神宮前1-1-1<br>表参道ビル 3F</p>
+                            <p class="text-sm text-stone-400 mb-1 tracking-widest" data-i18n="access_label_address">ADDRESS</p>
+                            <p data-i18n="access_address">Migawa, Mito-shi, Ibaraki-ken,<br>Japan</p>
                         </div>
                         <div>
-                            <p class="text-sm text-stone-400 mb-1">OPEN</p>
-                            <p>10:00 - 20:00（最終受付 18:30）</p>
+                            <p class="text-sm text-stone-400 mb-1 tracking-widest" data-i18n="access_label_phone">PHONE</p>
+                            <p>070-2219-2608</p>
                         </div>
                         <div>
-                            <p class="text-sm text-stone-400 mb-1">CLOSE</p>
-                            <p>不定休</p>
+                            <p class="text-sm text-stone-400 mb-1 tracking-widest" data-i18n="access_label_open">OPEN</p>
+                            <p data-i18n="access_open">10:00 - 17:00</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-stone-400 mb-1 tracking-widest" data-i18n="access_label_close">CLOSE</p>
+                            <p data-i18n="access_close">Sunday</p>
                         </div>
                     </div>
                 </div>
@@ -260,7 +337,7 @@
                 <div class="w-full md:w-1/2 h-[400px] bg-stone-200 rounded-xl overflow-hidden shadow-md fade-in relative">
                     <!-- 実際のGoogle Map埋め込みコードをここに貼ります -->
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.7479754723024!2d139.70289197656608!3d35.66859343135509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c9fa9e2e881%3A0x35396adb5ba7ce03!2z5Y6f5a6_!5e0!3m2!1sja!2sjp!4v1703649000000!5m2!1sja!2sjp" 
+                        src="https://maps.google.com/maps?q=36.3607222,140.4673889&hl=en&z=17&output=embed" 
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
@@ -271,18 +348,169 @@
     <!-- フッター -->
     <footer class="bg-brand-900 text-white py-12">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="font-serif text-2xl mb-8">Jennie Fashion</h2>
+            <h2 class="font-serif text-2xl mb-8">Jenny's Fashion / lash</h2>
             <div class="flex justify-center space-x-6 mb-8">
                 <a href="#" class="hover:text-brand-300 transition-colors text-2xl"><i class="ph ph-instagram-logo"></i></a>
                 <a href="#" class="hover:text-brand-300 transition-colors text-2xl"><i class="ph ph-twitter-logo"></i></a>
                 <a href="#" class="hover:text-brand-300 transition-colors text-2xl"><i class="ph ph-line-logo"></i></a>
             </div>
-            <p class="text-sm text-brand-200">&copy; 2025 Jennie Fashion. All Rights Reserved.</p>
+            <p class="text-sm text-brand-200">&copy; 2025 Jenny's Fashion / lash. All Rights Reserved.</p>
         </div>
     </footer>
 
     <!-- JavaScript（動きをつける部分） -->
     <script>
+        // 翻訳データ辞書
+        const translations = {
+            en: {
+                nav_concept: "Concept",
+                nav_menu: "Menu",
+                nav_gallery: "Gallery",
+                nav_access: "Access",
+                book_now: "Book Now",
+                hero_subtitle: "Your Private Salon",
+                hero_title: "Magic for<br>Your Fingertips.",
+                hero_button: "Reservation",
+                concept_title: "Concept",
+                concept_text1: "Jenny's Fashion / lash is a private salon for sophisticated women. We propose designs that incorporate trends while suiting each client's lifestyle.",
+                concept_text2: "Please spend a relaxing time forgetting the busyness of daily life in a spacious private room.",
+                menu_title: "Menu",
+                menu_subtitle: "Price List",
+                menu_tab_nail: "Nail",
+                menu_tab_lash: "Eyelash",
+                menu_1_title: "One Color / Glitter Gradient",
+                menu_1_desc: "Off & Care included / 90min",
+                menu_2_title: "French / Color Gradient",
+                menu_2_desc: "Off & Care included / 100min",
+                menu_3_title: "Monthly Design Course",
+                menu_3_desc: "Monthly trend designs / 120min",
+                menu_4_title: "Foot One Color",
+                menu_4_desc: "Foot bath & Care included",
+                lash_1_title: "Classic Extensions (100 strands)",
+                lash_1_desc: "Natural look / 90min",
+                lash_2_title: "Volume Lash (300 strands)",
+                lash_2_desc: "Voluminous look / 100min",
+                lash_3_title: "Lash Lift (Perm)",
+                lash_3_desc: "Treatment included / 60min",
+                lash_4_title: "Removal",
+                lash_4_desc: "For existing extensions",
+                view_more: "View More Menu →",
+                gallery_title: "Gallery",
+                gallery_subtitle: "Latest Designs",
+                view_instagram: "View on Instagram",
+                access_title: "Access",
+                access_label_name: "SALON NAME",
+                access_label_address: "ADDRESS",
+                access_address: "Migawa, Mito-shi, Ibaraki-ken,<br>Japan",
+                access_label_phone: "PHONE",
+                access_label_open: "OPEN",
+                access_open: "10:00 - 17:00",
+                access_label_close: "CLOSE",
+                access_close: "Sunday"
+            },
+            ja: {
+                nav_concept: "コンセプト",
+                nav_menu: "メニュー",
+                nav_gallery: "ギャラリー",
+                nav_access: "アクセス",
+                book_now: "ご予約",
+                hero_subtitle: "あなただけのプライベートサロン",
+                hero_title: "指先に、<br>魔法をかける時間。",
+                hero_button: "ご予約はこちら",
+                concept_title: "コンセプト",
+                concept_text1: "Jenny's Fashion / lashは、大人の女性のためのプライベートサロンです。<br>トレンドを取り入れつつも、お客様一人ひとりのライフスタイルに寄り添ったデザインをご提案いたします。",
+                concept_text2: "ゆったりとした個室空間で、<br>日々の忙しさを忘れる癒しのひとときをお過ごしください。",
+                menu_title: "メニュー",
+                menu_subtitle: "料金表",
+                menu_tab_nail: "ネイル",
+                menu_tab_lash: "まつ毛",
+                menu_1_title: "ワンカラー / ラメグラデーション",
+                menu_1_desc: "オフ・ケア込み / 90分",
+                menu_2_title: "フレンチ / カラーグラデーション",
+                menu_2_desc: "オフ・ケア込み / 100分",
+                menu_3_title: "定額デザインコース",
+                menu_3_desc: "毎月変わるトレンドデザイン / 120分",
+                menu_4_title: "フット ワンカラー",
+                menu_4_desc: "フットバス・ケア込み",
+                lash_1_title: "シングルラッシュ (100本)",
+                lash_1_desc: "自然な仕上がり / 90分",
+                lash_2_title: "ボリュームラッシュ (300本)",
+                lash_2_desc: "華やかな仕上がり / 100分",
+                lash_3_title: "ラッシュリフト (まつ毛パーマ)",
+                lash_3_desc: "トリートメント込み / 60分",
+                lash_4_title: "オフ",
+                lash_4_desc: "付け替え時など",
+                view_more: "詳しいメニューを見る →",
+                gallery_title: "ギャラリー",
+                gallery_subtitle: "最新のデザイン",
+                view_instagram: "Instagramを見る",
+                access_title: "アクセス",
+                access_label_name: "店名",
+                access_label_address: "住所",
+                access_address: "〒310-0912<br>茨城県水戸市見川",
+                access_label_phone: "電話番号",
+                access_label_open: "営業時間",
+                access_open: "10:00 - 17:00",
+                access_label_close: "定休日",
+                access_close: "日曜日"
+            }
+        };
+
+        // 言語切り替え関数
+        function switchLanguage(lang) {
+            // HTMLの言語属性を変更
+            document.documentElement.lang = lang;
+
+            // すべてのdata-i18n属性を持つ要素を取得
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // ボタンのスタイル更新（PC）
+            const btnEn = document.getElementById('btn-en');
+            const btnJa = document.getElementById('btn-ja');
+            
+            if (lang === 'en') {
+                btnEn.className = "lang-btn px-3 py-1 bg-brand-800 text-white transition-colors";
+                btnJa.className = "lang-btn px-3 py-1 bg-white text-brand-800 hover:bg-brand-50 transition-colors";
+            } else {
+                btnEn.className = "lang-btn px-3 py-1 bg-white text-brand-800 hover:bg-brand-50 transition-colors";
+                btnJa.className = "lang-btn px-3 py-1 bg-brand-800 text-white transition-colors";
+            }
+        }
+
+        // メニュー切り替え関数
+        function switchMenu(type) {
+            const listNail = document.getElementById('menu-list-nail');
+            const listLash = document.getElementById('menu-list-lash');
+            const tabNail = document.getElementById('tab-nail');
+            const tabLash = document.getElementById('tab-lash');
+
+            // アクティブなスタイル定義
+            const activeStyle = "bg-brand-800 text-white shadow-sm";
+            const inactiveStyle = "text-stone-500 hover:text-brand-800 bg-transparent shadow-none";
+
+            if (type === 'nail') {
+                listNail.classList.remove('hidden');
+                listLash.classList.add('hidden');
+                
+                // クラスをリセットしてから適用
+                tabNail.className = `px-8 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all ${activeStyle}`;
+                tabLash.className = `px-8 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all ${inactiveStyle}`;
+            } else {
+                listNail.classList.add('hidden');
+                listLash.classList.remove('hidden');
+
+                tabNail.className = `px-8 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all ${inactiveStyle}`;
+                tabLash.className = `px-8 py-2 rounded-full text-sm font-bold uppercase tracking-wide transition-all ${activeStyle}`;
+            }
+        }
+
         // スマホメニューの開閉処理
         const menuBtn = document.getElementById('menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -291,14 +519,12 @@
 
         function toggleMenu() {
             mobileMenu.classList.toggle('translate-x-full');
-            // メニューが開いているときは背景をスクロールさせない
             document.body.classList.toggle('overflow-hidden');
         }
 
         menuBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
         
-        // メニュー内のリンクをクリックしたら閉じる
         mobileLinks.forEach(link => {
             link.addEventListener('click', toggleMenu);
         });
